@@ -1,0 +1,62 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRAwpf"
+        xmlns:Specialized="clr-namespace:System.Collections.Specialized;assembly=System.Collections.Specialized" x:Class="CRAwpf.MainWindow"
+        mc:Ignorable="d"
+        Title="CRA Application" Height="480" Width="685" Background="#FFBFD4E8" Foreground="#FF968282" SizeToContent="Manual" RenderTransformOrigin="0.5,0.5">
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform X="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Grid>
+        <Button x:Name="AddList" Content="Open" HorizontalAlignment="Left" Height="28" Margin="34,278,0,0" VerticalAlignment="Top" Width="74" Click="AddList_Click" Background="#FFDACAA6"/>
+        <TextBox x:Name="FilePath" HorizontalAlignment="Left" Height="28" Margin="34,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" BorderBrush="#FF393A3D"/>
+        <ListBox x:Name="QueryList" HorizontalAlignment="Left" Height="174" Margin="119,244,0,0" VerticalAlignment="Top" Width="70" BorderBrush="#FF303235"/>
+        <TextBox x:Name="Telnum" HorizontalAlignment="Left" Margin="394,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="24" BorderBrush="#FF46474B"/>
+        <Button x:Name="Query" Content="CRA Query" HorizontalAlignment="Left" Margin="394,268,0,0" VerticalAlignment="Top" Click="Query_Click" Height="26" Width="78" Background="#FFCEBC96"/>
+        <TextBox x:Name="ClassifierID" HorizontalAlignment="Left" Height="75" Margin="394,314,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" BorderBrush="#FF343538"/>
+        <TextBox x:Name="CertNum" HorizontalAlignment="Left" Height="24" Margin="380,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" BorderBrush="#FF2E2F32"/>
+        <TextBox x:Name="MobileCountNum" HorizontalAlignment="Left" Height="26" Margin="501,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" BorderBrush="#FF2C2D31"/>
+        <Button x:Name="MobileCount" Content="Mobile Count" HorizontalAlignment="Left" Margin="380,97,0,0" VerticalAlignment="Top" Click="MobileCount_Click" Height="26" Width="96" Background="#FFF1DDB2"/>
+        <ComboBox x:Name="CertType" HorizontalAlignment="Left" Height="26" Margin="510,57,0,0" VerticalAlignment="Top" Width="87" IsReadOnly="True" SelectionChanged="CertType_SelectionChanged" BorderBrush="#FF353030">
+            <ComboBoxItem Content="NationalID" IsSelected="True"></ComboBoxItem>
+            <ComboBoxItem Content="Passport"></ComboBoxItem>
+            <ComboBoxItem Content="RefugeeCard"></ComboBoxItem>
+        </ComboBox>
+        <Label Content="Certificate Number" HorizontalAlignment="Left" Margin="379,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.638,0.222" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="Certificate Type" HorizontalAlignment="Left" Margin="507,31,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="Service Number" HorizontalAlignment="Left" Margin="394,208,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="CRA ID" HorizontalAlignment="Left" Margin="394,294,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <ComboBox x:Name="CRTT" HorizontalAlignment="Left" Height="24" Margin="202,58,0,0" VerticalAlignment="Top" Width="94" BorderBrush="#FF312D2D">
+            <ComboBoxItem Content="NationalID" IsSelected="True">
+            </ComboBoxItem>
+            <ComboBoxItem Content="Passport"></ComboBoxItem>
+            <ComboBoxItem Content="RefugeeCard"></ComboBoxItem>
+        </ComboBox>
+        <TextBox x:Name="CertNO" HorizontalAlignment="Left" Height="27" Margin="79,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" BorderBrush="#FF323337"/>
+        <TextBox x:Name="ServiceNO" HorizontalAlignment="Left" Height="26" Margin="79,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" BorderBrush="#FF2E2F31"/>
+        <Button x:Name="QueryMatching" Content="Query Matching" HorizontalAlignment="Left" Height="33" Margin="79,136,0,0" VerticalAlignment="Top" Width="101" Click="QueryMatching_Click" BorderBrush="#FF433F3F" Background="#FFF0E2B0"/>
+        <TextBox x:Name="Result" HorizontalAlignment="Left" Height="51" Margin="202,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" BorderBrush="#FF323337"/>
+        <Label Content="Certificate No" HorizontalAlignment="Left" Margin="79,31,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="Service Number" HorizontalAlignment="Left" Margin="79,79,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="13"/>
+        <Label Content="Matching Result" HorizontalAlignment="Left" Margin="202,87,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Button x:Name="QueryAllItems" Content="Query All" HorizontalAlignment="Left" Margin="34,318,0,0" VerticalAlignment="Top" Height="28" Width="74" Click="QueryAllItems_Click" Background="#FFD3C099"/>
+        <ListBox x:Name="BatchQueryResult" HorizontalAlignment="Left" Height="174" Margin="194,245,0,0" VerticalAlignment="Top" Width="154" BorderBrush="#FF383A3D"/>
+        <Label x:Name="FilePath1" Content="File Path" HorizontalAlignment="Left" Margin="34,221,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="MSISDN" HorizontalAlignment="Left" Margin="114,0,0,0" VerticalAlignment="Center"/>
+        <Label Content="CRA_ID List" HorizontalAlignment="Left" Margin="189,0,0,0" VerticalAlignment="Center" FontSize="13" FontFamily="Calibri"/>
+        <Label Content="Certificate Type" HorizontalAlignment="Left" Margin="202,31,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Calibri"/>
+        <Rectangle HorizontalAlignment="Left" Height="167" Margin="66,21,0,0" Stroke="Black" VerticalAlignment="Top" Width="253"/>
+        <Rectangle HorizontalAlignment="Left" Height="167" Margin="373,21,0,0" Stroke="Black" VerticalAlignment="Top" Width="253"/>
+        <Rectangle HorizontalAlignment="Left" Height="225" Margin="21,205,0,0" Stroke="Black" VerticalAlignment="Top" Width="343"/>
+        <Rectangle HorizontalAlignment="Left" Height="225" Margin="373,205,0,0" Stroke="Black" VerticalAlignment="Top" Width="274"/>
+
+    </Grid>
+</Window>
