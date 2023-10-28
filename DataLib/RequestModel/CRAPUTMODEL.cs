@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace DataLib
 {
 
@@ -33,6 +35,7 @@ namespace DataLib
         public string  houseNumber { get; set; }
         public string  postalCode { get; set; }
         public string  tel { get; set; }
+
     }
 
     public class Service
@@ -55,5 +58,6 @@ namespace DataLib
         public string apn { get; set; } = "RTL";
         public int? privateNumber { get; set; }
         public int? privateNumberDetection { get; set; }
+
     }
 }
