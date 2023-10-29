@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRA_All\DataLib\DataLib.csproj" />
+    <ProjectReference Include="..\DataLib\DataLib.csproj" />
   </ItemGroup>
 
 </Project>
