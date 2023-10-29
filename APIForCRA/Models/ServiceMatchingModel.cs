@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace APIForCRA
 {
-    public class ServiceMatchingModel
+    public class ServiceMatchingM
     {
-        public string serviceNumber { get; set; }
-        public string identificationNo { get; set; }
-        public int identificationType { get; set; }
+        public string serviceNum { get; set; }
+        public string identificationNom { get; set; }
+        public int idType { get; set; }
     }
 }

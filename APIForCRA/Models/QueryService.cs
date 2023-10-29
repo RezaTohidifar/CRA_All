@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace APIForCRA
 {
-    public class QueryService
+    public class QueryServiceModel
     {
-        public string serviceNumber { get; set; }
+        public string serviceNum { get; set; }
     }
 }

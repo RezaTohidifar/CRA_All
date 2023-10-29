@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace APIForCRA
 {
-    public class MobileCount
+    public class MobileCountModel
     {
-        public string identificationNo { get; set; }
-        public int identificationType { get; set; }
+        public string identificationNom { get; set; }
+        public int idType { get; set; }
     }
 }

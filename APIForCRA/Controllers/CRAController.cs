@@ -25,10 +25,10 @@ namespace APIForCRA.Controllers
 
         [HttpPost]
         [Route("queryCRA")]
-        public async Task<CRAQueryResponseModel> CRAQueryAsyncPost(QueryService queryService)
+        public async Task<CRAQueryResponseModel> CRAQueryAsyncPost(QueryServiceModel queryService)
         {
             CRAQueryInputModel queryData = new() { 
-            serviceNumber = "0"+queryService.serviceNumber,
+            serviceNumber = "0"+queryService.serviceNum,
             requestId = CRASEQUENCE.SeqIDGenerator(),
             serviceType = "2"
             };
@@ -39,28 +39,28 @@ namespace APIForCRA.Controllers
 
         [HttpPost]
         [Route("mobileCount")]
-        public async Task<CRAMobileCountOutModel> CRAMobileCountAsyncPost(MobileCount data)
+        public async Task<CRAMobileCountOutModel> CRAMobileCountAsyncPost(MobileCountModel data)
         {
-            MobileCountModel queryData = new()
+            DataLib.MobileCountModel queryData = new()
             {
-                identificationNo = data.identificationNo,
+                identificationNo = data.identificationNom,
                 requestId = CRASEQUENCE.SeqIDGenerator(),
-                identificationType = data.identificationType
+                identificationType = data.idType
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<MobileCountModel, CRAMobileCountOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("MobileCount"));
+            var output = await ApiCallerGeneric.CRACallerGenericAsync<DataLib.MobileCountModel, CRAMobileCountOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("MobileCount"));
             return output;
         }
 
         [HttpPost]
         [Route("serviceMatching")]
-        public async Task<CRAServiceOutModel> CRAServiceMatchingAsyncPost(ServiceMatchingModel data)
+        public async Task<CRAServiceOutModel> CRAServiceMatchingAsyncPost(ServiceMatchingM data)
         {
             CARSERVICEMATCHINGMODEL queryData = new()
             {
-                identificationNo = data.identificationNo,
+                identificationNo = data.identificationNom,
                 requestId = CRASEQUENCE.SeqIDGenerator(),
-                identificationType = data.identificationType,
-                serviceNumber = "0" + data.serviceNumber
+                identificationType = data.idType,
+                serviceNumber = "0" + data.serviceNum
             };
             var output = await ApiCallerGeneric.CRACallerGenericAsync<CARSERVICEMATCHINGMODEL, CRAServiceOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("Matching"));
             return output;
