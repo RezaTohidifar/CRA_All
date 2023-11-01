@@ -6,6 +6,6 @@
         public string serviceNumber { get; set; }
         public string requestId { get; set; } = CRASEQUENCE.SeqIDGenerator();
         public string identificationNo { get; set; }
-        public int identificationType { get; set; }
+        public int? identificationType { get; set; }
     }
 }

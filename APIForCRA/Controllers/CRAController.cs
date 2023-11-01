@@ -8,9 +8,11 @@ using DataLib;
 using DataLib.RequestModel;
 using DataLib.ResponseModel;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace APIForCRA.Controllers
 {
+    [RequireHttps]
     [ApiController]
     [Route("[controller]")]
     public class CRAController : ControllerBase
@@ -55,6 +57,10 @@ namespace APIForCRA.Controllers
         [Route("serviceMatching")]
         public async Task<CRAServiceOutModel> CRAServiceMatchingAsyncPost(ServiceMatchingM data)
         {
+            if (data.idType == null)
+            {
+                data.idType = 0;
+            }
             CARSERVICEMATCHINGMODEL queryData = new()
             {
                 identificationNo = data.identificationNom,
