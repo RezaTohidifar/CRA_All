@@ -33,6 +33,7 @@ namespace APIForCRA
         {
             var x = @"C:\Users\r.tohidifar\Desktop\Rightel\MNP\DV-IR-2023-2024.crt";
             services.AddControllers();
+            services.AddSingleton<IDBConHellper, DBConHellper>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIForCRA", Version = "v1" });
@@ -59,6 +60,7 @@ namespace APIForCRA
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "APIForCRA v1"));
                 app.UseHttpsRedirection();
+
             }
 
             app.UseHttpsRedirection();

@@ -12,7 +12,12 @@ namespace DataLib
 {
     public class ApiCallerGeneric
     {
-        public async static Task<U> CRACallerGenericAsync<T, U>(T data, string url) where T : class, new() where U : class, new()
+        private readonly IDBConHellper _dBConHellper;
+        public ApiCallerGeneric(IDBConHellper dBConHellper)
+        {
+            _dBConHellper = dBConHellper;
+        }
+        public async Task<U> CRACallerGenericAsync<T, U>(T data, string url) where T : class, new() where U : class, new()
         {
             string reqDate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ssfff");
             Stopwatch stopWatch = new();
@@ -35,7 +40,7 @@ namespace DataLib
                         target = url,
                         exceptions = null
                     };
-                    DBConHellper.LogDBForAll(dbInfo);
+                    _dBConHellper.LogDBForAll(dbInfo);
                     if (typeof(T) != typeof(MobileCountModel) && typeof(T) != typeof(CRAPUTMODEL))
                     {
                         object val = typeof(T).GetProperty("serviceNumber").GetValue(data);
@@ -51,7 +56,7 @@ namespace DataLib
             }
             catch (Exception e)
             {
-                _ = new DBLOG()
+                DBLOG logers = new DBLOG()
                 {
                     elapsedTime = null,
                     request = JsonConvert.SerializeObject(data),
@@ -61,6 +66,7 @@ namespace DataLib
                     target = url,
                     exceptions = e.Message
                 };
+                _dBConHellper.LogDBForAll(logers);
                 return new U();
             }
         }
