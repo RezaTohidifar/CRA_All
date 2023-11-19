@@ -34,6 +34,7 @@ namespace APIForCRA
             var x = @"C:\Users\r.tohidifar\Desktop\Rightel\MNP\DV-IR-2023-2024.crt";
             services.AddControllers();
             services.AddSingleton<IDBConHellper, DBConHellper>();
+            services.AddSingleton<IApiCallerGeneric, ApiCallerGeneric>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "APIForCRA", Version = "v1" });

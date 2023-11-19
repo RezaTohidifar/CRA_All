@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ApiCaller.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="DcmSqlQueryProviderLib">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>0</VersionMinor>

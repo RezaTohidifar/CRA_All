@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataLib
 {
-    public class ApiCallerGeneric
+    public class ApiCallerGeneric : IApiCallerGeneric
     {
         private readonly IDBConHellper _dBConHellper;
         public ApiCallerGeneric(IDBConHellper dBConHellper)

@@ -17,24 +17,26 @@ namespace APIForCRA.Controllers
     [Route("[controller]")]
     public class CRAController : ControllerBase
     {
-        
+        private readonly IApiCallerGeneric _API;
         private readonly ILogger<CRAController> _logger;
 
-        public CRAController(ILogger<CRAController> logger)
+        public CRAController(ILogger<CRAController> logger, IApiCallerGeneric API)
         {
             _logger = logger;
+            _API = API;
         }
 
         [HttpPost]
         [Route("queryCRA")]
         public async Task<CRAQueryResponseModel> CRAQueryAsyncPost(QueryServiceModel queryService)
         {
-            CRAQueryInputModel queryData = new() { 
-            serviceNumber = "0"+queryService.serviceNum,
-            requestId = CRASEQUENCE.SeqIDGenerator(),
-            serviceType = "2"
+            CRAQueryInputModel queryData = new()
+            {
+                serviceNumber = "0" + queryService.serviceNum,
+                requestId = CRASEQUENCE.SeqIDGenerator(),
+                serviceType = "2"
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<CRAQueryInputModel, CRAQueryResponseModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("Query"));
+            var output = await _API.CRACallerGenericAsync<CRAQueryInputModel, CRAQueryResponseModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("Query"));
             return output;
 
         }
@@ -49,7 +51,7 @@ namespace APIForCRA.Controllers
                 requestId = CRASEQUENCE.SeqIDGenerator(),
                 identificationType = data.idType
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<DataLib.MobileCountModel, CRAMobileCountOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("MobileCount"));
+            var output = await _API.CRACallerGenericAsync<DataLib.MobileCountModel, CRAMobileCountOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("MobileCount"));
             return output;
         }
 
@@ -68,7 +70,7 @@ namespace APIForCRA.Controllers
                 identificationType = data.idType,
                 serviceNumber = "0" + data.serviceNum
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<CARSERVICEMATCHINGMODEL, CRAServiceOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("Matching"));
+            var output = await _API.CRACallerGenericAsync<CARSERVICEMATCHINGMODEL, CRAServiceOutModel>(queryData, URLDictionary.AllURL.GetValueOrDefault("Matching"));
             return output;
         }
 
@@ -82,7 +84,7 @@ namespace APIForCRA.Controllers
                 requestId = CRASEQUENCE.SeqIDGenerator(),
                 serviceNumber = "0" + data.serviceNumber
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<CRACLOSEINPUTMODEL, CRACLOSEOUTMODEL>(queryData, URLDictionary.AllURL.GetValueOrDefault("Close"));
+            var output = await _API.CRACallerGenericAsync<CRACLOSEINPUTMODEL, CRACLOSEOUTMODEL>(queryData, URLDictionary.AllURL.GetValueOrDefault("Close"));
             return output;
         }
 
@@ -140,7 +142,7 @@ namespace APIForCRA.Controllers
                     privateNumberDetection = data.service.privateNumberDetection
                 }
             };
-            var output = await ApiCallerGeneric.CRACallerGenericAsync<CRAPUTMODEL, CRAPUTOUTMODEL>(queryData, URLDictionary.AllURL.GetValueOrDefault("Put"));
+            var output = await _API.CRACallerGenericAsync<CRAPUTMODEL, CRAPUTOUTMODEL>(queryData, URLDictionary.AllURL.GetValueOrDefault("Put"));
             return output;
         }
     }
